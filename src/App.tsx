@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { useRecoilState } from "recoil";
+import FavouritesPlayersList from "./components/FavouritesPlayersList";
+import PlayersList from "./components/PlayersList";
+import { playersState } from "./store";
+import AppBar from "./components/AppBar/AppBar";
+import SearchForPlayer from "./components/SearchForPlayer/SearchForPlayer";
 
-function App() {
+const URL = "https://www.balldontlie.io/api/v1/players";
+
+const App: React.FC = () => {
+  const [state, setPlayers] = useRecoilState(playersState);
+  const { players } = state;
+  const [errors, setErrors] = useState<Error>();
+
+  useEffect(() => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((data) =>
+        setPlayers({ ...state, players: data.data, filteredPlayers: data.data })
+      )
+      .catch((error: Error) => setErrors(error));
+  }, []);
+
+  // Errors
+  if (errors) return <>{errors.message ?? "Somthing went wrong..."}</>;
+
+  // Loading
+  if (!players.length) return <>LOADING...</>;
+
+  // Render
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='root'>
+      <AppBar />
+      <main>
+        <div style={{ padding: 20, display: "flex", flexGrow: 1 }}>
+          <PlayersList />
+          <FavouritesPlayersList />
+        </div>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
