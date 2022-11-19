@@ -14,3 +14,11 @@ export const playersState = atom({
     searchTerm: "",
   },
 });
+
+export const appState = atom({
+  key: "appState",
+  default: {
+    theme: "light",
+    loading: false,
+  },
+});

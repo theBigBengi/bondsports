@@ -14,7 +14,9 @@ interface SinglePlayerProps {
 
 const PlayerItem = ({ player }: SinglePlayerProps) => {
   const { first_name, last_name, team } = player;
-  const { name } = team;
+  const { full_name: teamName } = team;
+
+  console.log(player);
 
   const [favoritesPlayers, setFavoritesPlayers] =
     useRecoilState(favouritesState);
@@ -53,17 +55,21 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
       <div className='player'>
         <div className='player--info'>
           <p>{`${first_name} ${last_name}`}</p>
-          <p>{name}</p>
+          <p>{teamName}</p>
         </div>
         <div className='player--actions'>
-          <Favorites
-            handleClick={handleFavoritesClick}
-            isFavorite={isFavorite}
-          />
-          <InformationCircleIcon
-            onClick={() => setShowModal(true)}
-            className='icon'
-          />
+          <div>
+            <Favorites
+              handleClick={handleFavoritesClick}
+              isFavorite={isFavorite}
+            />
+          </div>
+          <div>
+            <InformationCircleIcon
+              onClick={() => setShowModal(true)}
+              className='icon'
+            />
+          </div>
         </div>
       </div>
 
@@ -71,15 +77,17 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
         // PLAYER MODAL
         showModal && (
           <Modal onClose={setShowModal}>
-            <div className='modal__close'>
-              <button onClick={() => setShowModal(false)}>
-                <XCircleIcon className='icon' />
-              </button>
+            <div className='player-modal'>
+              <div className='banner'>
+                <h3>{`${first_name} ${last_name}`}</h3>
+              </div>
+              <div className='player-team'>
+                <h4>{teamName}</h4>
+              </div>
+              <div className='modal__actions'>
+                <button>Add to favorites</button>
+              </div>
             </div>
-            <div className='modal__content'>
-              <h3>{player.last_name}</h3>
-            </div>
-            <div className='modal__actions'></div>
           </Modal>
         )
       }

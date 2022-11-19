@@ -6,6 +6,7 @@ import PlayersList from "./components/PlayersList";
 import { playersState } from "./store";
 import AppBar from "./components/AppBar/AppBar";
 import SearchForPlayer from "./components/SearchForPlayer/SearchForPlayer";
+import { isMobile } from "react-device-detect";
 
 const URL = "https://www.balldontlie.io/api/v1/players";
 
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [state, setPlayers] = useRecoilState(playersState);
   const { players } = state;
   const [errors, setErrors] = useState<Error>();
+  const [errors2, setErrors2] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(URL)
@@ -34,9 +36,14 @@ const App: React.FC = () => {
     <div className='root'>
       <AppBar />
       <main>
-        <div style={{ padding: 20, display: "flex", flexGrow: 1 }}>
-          <PlayersList />
-          <FavouritesPlayersList />
+        <div>
+          {isMobile && errors2 && <PlayersList />}
+          {isMobile && !errors2 && <FavouritesPlayersList />}
+          {!isMobile && (
+            <>
+              <PlayersList /> <FavouritesPlayersList />
+            </>
+          )}
         </div>
       </main>
     </div>

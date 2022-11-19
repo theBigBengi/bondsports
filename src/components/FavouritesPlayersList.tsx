@@ -3,7 +3,7 @@ import { favouritesState } from "../store";
 import PlayerItem from "./playerItem/PlayerItem";
 import { HexColorPicker } from "react-colorful";
 import { useState } from "react";
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 
 const colors = ["red", "blue", "green", "white"];
 
