@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [state, setPlayers] = useRecoilState(playersState);
   const { players } = state;
   const [errors, setErrors] = useState<Error>();
-  const [errors2, setErrors2] = useState<boolean>(false);
+  const [displayFavorites, setDisplayFavorites] = useState<boolean>(isMobile);
 
   useEffect(() => {
     fetch(URL)
@@ -37,14 +37,19 @@ const App: React.FC = () => {
       <AppBar />
       <main>
         <div>
-          {isMobile && errors2 && <PlayersList />}
-          {isMobile && !errors2 && <FavouritesPlayersList />}
-          {!isMobile && (
-            <>
-              <PlayersList /> <FavouritesPlayersList />
-            </>
+          {(!isMobile || (isMobile && !displayFavorites)) && <PlayersList />}
+          {(!isMobile || (isMobile && displayFavorites)) && (
+            <FavouritesPlayersList />
           )}
         </div>
+
+        {isMobile && (
+          <div>
+            <button onClick={() => setDisplayFavorites(!displayFavorites)}>
+              {displayFavorites ? "Favorites" : "Players"}
+            </button>
+          </div>
+        )}
       </main>
     </div>
   );

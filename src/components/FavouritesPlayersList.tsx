@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { favouritesState } from "../store";
 import PlayerItem from "./playerItem/PlayerItem";
-import { HexColorPicker } from "react-colorful";
+// import { HexColorPicker } from "react-colorful";
 import { useState } from "react";
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 
@@ -15,7 +15,11 @@ const FavouritesPlayersList = () => {
     setColor(color);
   };
 
-  const emptyList = <h3>Add players to favoriets...</h3>;
+  const emptyList = (
+    <h3 style={{ padding: "50px 0", wordBreak: "break-all", maxWidth: 200 }}>
+      Add players to favoriets...
+    </h3>
+  );
 
   const playersList = (
     <ul style={{ backgroundColor: color }}>
@@ -45,7 +49,7 @@ const FavouritesPlayersList = () => {
                 `#${Math.floor(Math.random() * 16777215).toString(16)}`
               )
             }
-            style={{ width: 35 }}
+            style={{ width: 25, strokeWidth: 1 }}
           />
         </div>
 

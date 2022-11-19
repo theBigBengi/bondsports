@@ -14,7 +14,7 @@ interface SinglePlayerProps {
 
 const PlayerItem = ({ player }: SinglePlayerProps) => {
   const { first_name, last_name, team } = player;
-  const { full_name: teamName } = team;
+  const { full_name: teamName, abbreviation } = team;
 
   console.log(player);
 
@@ -54,8 +54,10 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
     <>
       <div className='player'>
         <div className='player--info'>
-          <p>{`${first_name} ${last_name}`}</p>
-          <p>{teamName}</p>
+          <div>
+            <p>{`${first_name} ${last_name}`}</p>
+          </div>
+          <p>{abbreviation}</p>
         </div>
         <div className='player--actions'>
           <div>
@@ -83,8 +85,9 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
               </div>
               <div className='player-team'>
                 <h4>{teamName}</h4>
+                <label>Division</label>
               </div>
-              <div className='modal__actions'>
+              <div className='modal-actions'>
                 <button>Add to favorites</button>
               </div>
             </div>

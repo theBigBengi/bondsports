@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-
-.App-link {
-  color: #61dafb;
-}
-
 .icon {
     width: 18px;
     color: rgb(0,0,0, 0.8);
@@ -33,16 +28,20 @@ main {
     flex-wrap: wrap;
     flex-grow: 1;
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100vh - 60px);
 }
 
-main > div {
+main > div:first-child {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
     height: calc(100% - 100px);
     padding: 50px 20px;
+}
+
+main > div:nth-child(2) {
+  width: 100%;
 }
 
 .container {
@@ -69,23 +68,109 @@ main > div {
     border: 1px solid rgb(0, 0, 0, 0.1);
     max-height: calc(100% - 90px);
     overflow-y: auto;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.05);
     
 }
 
 .container h3 {
     text-align: center;
     margin: auto;
-    
 }
 
 .container > div {
     padding: 0 20px;
     height: 100%;
-
 }
 
+.button {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(0,0,0, 0.1);
+    border-radius: 999px;
+    box-shadow: 0px 1px 1px 1px rgb(0,0,0, 0.1);
+}
 
-/* width */
+.button:hover {
+    cursor: pointer;
+}
+
+.button:active {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.list {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    max-width: 48%;
+}
+
+.players-list {
+    flex-grow: 1;
+    border: 1px solid rgb(0,0,0, 0.1);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.modal-layer {
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal {
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 11;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.15);
+    border-radius: 25px;
+    min-width: 200px;
+    
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+.modal-close {
+    width: 100%;
+}
+
+.modal-close > div {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+.modal-close button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    border: none;
+  }
+
+
+  /* width */
 ::-webkit-scrollbar {
     width: 10px;
   }
@@ -108,119 +193,50 @@ main > div {
   }
 
 
-@media only screen and (max-width: 650px) {
+
+  @media only screen and (max-width: 600px) {
     .root {
         padding:0px;
     }
+
     .container {
       max-width: 100%;
     }
-    main > div {
-        padding: 10px;
+
+    main  {
+        overflow: hidden;
     }
+
+    main > div:first-child {
+        padding: 0px;
+        padding:10px;
+        height: 90%;
+    }
+
+    main > div:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main button {
+        background-color: rgb(255, 171, 54);
+        color:  rgb(211, 5, 101);
+        border: 1px solid rgb(0,0,0, 0.1);
+        border-radius: 15px;
+        padding: 10px 20px;
+        width: 120px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
     .container > div {
         padding: 0px;
     }
+
     .modal {
         height: 100%;
         width: 100%;
-        background-color: #61dafb;
+        border-radius: 0;
       }
   }
-
-
-
-
-.button {
-width: 30px;
-height: 30px;
-border: 1px solid rgb(0,0,0, 0.1);
-border-radius: 999px;
-box-shadow: 0px 1px 1px 1px rgb(0,0,0, 0.1);
-}
-
-.button:hover {
-
-cursor: pointer;
-}
-.button:active {
-    /* box-shadow: inset 0px 0px 1px 1px rgb(0,0,0, 0.1); */
-cursor: pointer;
-transform: scale(0.95);
-}
-
-.list {
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    max-width: 48%;
-    background-color: aquamarine;
-  /* padding:50px; */
-
-}
-
-.players-list {
-    flex-grow: 1;
-    border: 1px solid rgb(0,0,0, 0.1);
-    max-height: 600px;
-    overflow-y: auto;
-}
-
-
-.modal-layer {
-    background-color: rgba(0,0,0,0.5);
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-}
-
-.modal {
-    background-color: rgb(255, 255, 255);
-    height: 50%;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 11;
- 
-  }
-
-.modal-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    width: 100%;
-  }
-
-.modal-close {
-    width: 100%;
-    background-color: aliceblue;
-}
-
-.modal-close > div {
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* width: 100%; */
-    padding: 0 10px;
-  }
-
-.modal-close button {
-    /* all: unset; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: aliceblue;
-    border: none;
-  }
-
-

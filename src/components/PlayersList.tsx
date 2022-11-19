@@ -1,14 +1,18 @@
 import { useRecoilValue } from "recoil";
 import { playersState } from "../store";
-import SearchPlayerInput from "./SearchPlayerInput";
 import PlayerItem from "./playerItem/PlayerItem";
 import SearchForPlayer from "./SearchForPlayer/SearchForPlayer";
+import React from "react";
 
-const PlayersList = () => {
+const PlayersList: React.FC = () => {
   const { filteredPlayers, searchTerm } = useRecoilValue(playersState);
 
   // When there is no match in the search terms
-  const noResults = <h3>{`No match for ${searchTerm}`}</h3>;
+  const noResults = (
+    <h3
+      style={{ padding: "50px 0", wordBreak: "break-all", maxWidth: 200 }}
+    >{`No match for ${searchTerm}`}</h3>
+  );
 
   // players list...
   const playersList = (
