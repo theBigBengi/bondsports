@@ -20,7 +20,7 @@ header > div {
 .appbar-logo{
    font-weight: 900;
    font-size: 22px;
-   color: rgba(180, 180, 180, 0.208)
+   color: rgba(104, 102, 68, 0.2)
 }
 
 .appbar-actions{
@@ -41,5 +41,5 @@ header > div {
     margin: auto;
     width: 25px;
     height: 25px;
-    color:  rgba(255, 0, 119, 0.366)
+    color:  rgba(160, 120, 138, 0.2)
 }

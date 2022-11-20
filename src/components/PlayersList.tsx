@@ -10,7 +10,7 @@ const PlayersList: React.FC = () => {
   // When there is no match in the search terms
   const noResults = (
     <h3
-      style={{ padding: "50px 0", wordBreak: "break-all", maxWidth: 200 }}
+      style={{ padding: "50px 0", maxWidth: 200 }}
     >{`No match for ${searchTerm}`}</h3>
   );
 
@@ -27,8 +27,7 @@ const PlayersList: React.FC = () => {
 
   return (
     <div className='container'>
-      <div className='e'>
-        {/* <SearchPlayerInput /> */}
+      <div>
         <SearchForPlayer />
         <>{filteredPlayers.length ? playersList : noResults}</>
       </div>

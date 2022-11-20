@@ -30,6 +30,14 @@
     overflow: hidden;
 }
 
+.spinner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 main {
     display: flex;
     align-items: flex-start;
@@ -68,21 +76,8 @@ main > div:nth-child(2) {
     justify-content: space-between;
     height: 40px;
     margin-bottom: 20px;
-    /* border: 1px solid rgb(0, 0, 0, 0.2); */
     border-radius: 5px;
 }
-
-/* button.clear-search-field {
-    width: 22px;
-    height: 22px;
-    border: 1px solid rgb(0,0,0, 0.1);
-    border-radius: 999px;
-    box-shadow: 0px 1px 1px 1px rgb(0,0,0, 0.1);
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0 2px;
-} */
 
 .color-picker {
     display: flex;
@@ -257,10 +252,10 @@ main > div:nth-child(2) {
         overflow: hidden;
     }
 
+    /* Lists */
     main > div:first-child {
-        padding: 0px;
-        padding:10px;
-        height: 90%
+        padding: 30px 10px 0px;
+        height: 85%
     }
 
     main > div:last-child {

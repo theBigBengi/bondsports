@@ -5,7 +5,7 @@ import FavouritesPlayersList from "./components/FavouritesPlayersList";
 import PlayersList from "./components/PlayersList";
 import { playersState } from "./store";
 import AppBar from "./components/AppBar/AppBar";
-import SearchForPlayer from "./components/SearchForPlayer/SearchForPlayer";
+import BarLoader from "react-spinners/BarLoader";
 import { isMobile } from "react-device-detect";
 import useViewport from "./hooks/useViewport";
 
@@ -32,7 +32,12 @@ const App: React.FC = () => {
   if (errors) return <>{errors.message ?? "Somthing went wrong..."}</>;
 
   // Loading
-  if (!players.length) return <>LOADING...</>;
+  if (!players.length)
+    return (
+      <div className='spinner'>
+        <BarLoader color='#ff0080' />
+      </div>
+    );
 
   // Render
   return (
