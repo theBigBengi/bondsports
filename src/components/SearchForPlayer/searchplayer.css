@@ -4,6 +4,7 @@
     align-items: center;
     height: 40px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .search-player input {
@@ -12,10 +13,23 @@
     height: 100%;
     background-color: transparent;
     padding: 0 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .search-player input:focus {
-    border: 1px solid rgba(128, 240, 255, 0.8);
+    border: 1px solid rgba(128, 240, 255, 0.924);
+}
+
+.search-player  svg {
+    width:25px;
+    height:25px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-player span svg:HOVER {
+    cursor: pointer;
 }

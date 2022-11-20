@@ -1,15 +1,16 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { favouritesState } from "../store";
 import PlayerItem from "./playerItem/PlayerItem";
 // import { HexColorPicker } from "react-colorful";
 import { useState } from "react";
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import { QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const colors = ["red", "blue", "green", "white"];
+const colors = ["rgba(255, 0, 119, 0.366)", "rgba(255,249,34)", "white"];
 
 const FavouritesPlayersList = () => {
   const [color, setColor] = useState<string>("#aabbcc");
-  const favoritesPlayers = useRecoilValue(favouritesState);
+  const [favoritesPlayers, setFavoritesPlayers] =
+    useRecoilState(favouritesState);
 
   const handleColorPick = (color: string) => {
     setColor(color);
@@ -34,24 +35,35 @@ const FavouritesPlayersList = () => {
   return (
     <div className='container'>
       <div>
-        <div className='list-bar'>
-          {colors.map((color) => (
-            <div
-              onClick={(e) => handleColorPick(color)}
-              style={{ backgroundColor: color }}
-              className='button'
-            />
-          ))}
+        {favoritesPlayers.length ? (
+          <div className='list-bar'>
+            <div>
+              <button onClick={() => setFavoritesPlayers([])}>
+                <XMarkIcon className='icon' />
+              </button>
+            </div>
+            <div className='color-picker'>
+              {colors.map((color) => (
+                <button
+                  onClick={(e) => handleColorPick(color)}
+                  style={{
+                    backgroundColor: color,
+                  }}
+                />
+              ))}
 
-          <QuestionMarkCircleIcon
-            onClick={(e) =>
-              handleColorPick(
-                `#${Math.floor(Math.random() * 16777215).toString(16)}`
-              )
-            }
-            style={{ width: 25, strokeWidth: 1 }}
-          />
-        </div>
+              <button>
+                <QuestionMarkCircleIcon
+                  onClick={(e) =>
+                    handleColorPick(
+                      `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                    )
+                  }
+                />
+              </button>
+            </div>
+          </div>
+        ) : null}
 
         <>{favoritesPlayers.length ? playersList : emptyList}</>
       </div>

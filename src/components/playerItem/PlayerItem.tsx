@@ -5,7 +5,6 @@ import { Favorites } from "../Favorites";
 import { useRecoilState } from "recoil";
 import { favouritesState } from "../../store";
 import Modal from "../Modal";
-import { XCircleIcon } from "@heroicons/react/24/solid";
 import "./style.css";
 
 interface SinglePlayerProps {
@@ -69,7 +68,7 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
           <div>
             <InformationCircleIcon
               onClick={() => setShowModal(true)}
-              className='icon'
+              className='icon info'
             />
           </div>
         </div>

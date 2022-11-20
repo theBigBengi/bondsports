@@ -19,14 +19,14 @@ const Modal = ({ children, onClose, title }: ModalProps) => {
           e.stopPropagation();
         }}
       >
-        <div className='modal-close'>
+        {/* <div className='modal-close'>
           <div>
-            <h4>d</h4>
+            <h4>title</h4>
             <button onClick={() => onClose(false)}>
               <XCircleIcon className='icon' />
             </button>
           </div>
-        </div>
+        </div> */}
         <div className='modal-content'>{children}</div>
       </div>
     </div>,

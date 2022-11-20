@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
 
 * {
   padding: 0;
@@ -8,12 +8,16 @@
 body {
   margin: 0;
   height: 100%;
-  font-family: "Abel";
+  font-family: "Metrophobic";
 }
 
 ul {
   list-style: none;
   padding: 0;
+}
+
+svg {
+  min-width:18px
 }
 
 code {

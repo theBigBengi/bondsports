@@ -15,6 +15,6 @@ export const Favorites = ({
 
   return cloneElement(favoritesTrigger, {
     onClick: handleClick,
-    className: "icon",
+    className: `icon ${isFavorite && "favorite"}`,
   });
 };

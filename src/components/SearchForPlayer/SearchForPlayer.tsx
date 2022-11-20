@@ -1,13 +1,22 @@
 import { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { playersState } from "../../store";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 import "./searchplayer.css";
 
 export default function SearchForPlayer() {
   const [state, setPlayersState] = useRecoilState(playersState);
   const { players, searchTerm } = state;
 
-  const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onSearchChange = (event?: ChangeEvent<HTMLInputElement>) => {
+    // if there is no event clear the search field
+    if (!event)
+      return setPlayersState({
+        ...state,
+        filteredPlayers: players,
+        searchTerm: "",
+      });
+
     const value = event.target.value.toLowerCase();
 
     const filteredPlayers = players.filter((player) => {
@@ -28,18 +37,10 @@ export default function SearchForPlayer() {
     <div className='search-player'>
       <input
         onChange={onSearchChange}
-        placeholder='Search'
+        placeholder='Search for player...'
         value={searchTerm}
       />
-      {searchTerm !== "" && (
-        <span
-          className='search-player__clear-button'
-          style={{ position: "absolute", right: 10, top: 18 }}
-          onClick={() => setPlayersState({ ...state, searchTerm: "" })}
-        >
-          X
-        </span>
-      )}
+      {searchTerm !== "" && <XCircleIcon onClick={() => onSearchChange()} />}
     </div>
   );
 }
