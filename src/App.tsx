@@ -7,6 +7,7 @@ import { playersState } from "./store";
 import AppBar from "./components/AppBar/AppBar";
 import SearchForPlayer from "./components/SearchForPlayer/SearchForPlayer";
 import { isMobile } from "react-device-detect";
+import useViewport from "./hooks/useViewport";
 
 const URL = "https://www.balldontlie.io/api/v1/players";
 
@@ -15,6 +16,8 @@ const App: React.FC = () => {
   const { players } = state;
   const [errors, setErrors] = useState<Error>();
   const [displayFavorites, setDisplayFavorites] = useState<boolean>(false);
+
+  const { width, height } = useViewport();
 
   useEffect(() => {
     fetch(URL)
@@ -33,7 +36,7 @@ const App: React.FC = () => {
 
   // Render
   return (
-    <div className='root'>
+    <div className='app-root' style={{ width, height }}>
       <AppBar />
       <main>
         <div>

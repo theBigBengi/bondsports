@@ -15,8 +15,6 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
   const { first_name, last_name, team } = player;
   const { full_name: teamName, abbreviation } = team;
 
-  console.log(player);
-
   const [favoritesPlayers, setFavoritesPlayers] =
     useRecoilState(favouritesState);
 
