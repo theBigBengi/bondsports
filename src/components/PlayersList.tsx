@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { playersState } from "../store";
-import PlayerItem from "./playerItem/Player";
+import PlayerItem from "./Player/Player";
 import SearchForPlayer from "./SearchForPlayer/SearchForPlayer";
 import React from "react";
 

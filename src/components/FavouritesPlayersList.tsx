@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { favouritesState } from "../store";
-import PlayerItem from "./playerItem/Player";
+import PlayerItem from "./Player/Player";
 // import { HexColorPicker } from "react-colorful";
 import { useState } from "react";
 import { QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -50,6 +50,7 @@ const FavouritesPlayersList = () => {
                   style={{
                     backgroundColor: color,
                   }}
+                  key={color}
                 />
               ))}
 

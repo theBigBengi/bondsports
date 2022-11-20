@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Player } from "../../models";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import { Favorites } from "../Favorites";
+import { Favorites } from "../Favorites/Favorites";
 import { useRecoilState } from "recoil";
 import { favouritesState } from "../../store";
-import Modal from "../Modal";
+import Modal from "../Modal/Modal";
 import "./player.css";
 
 interface SinglePlayerProps {
@@ -53,8 +53,6 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
       ? removelayerFromFavorites(player.id)
       : addPlayerToFavorites(player);
   };
-
-  console.log(player);
 
   return (
     <>
