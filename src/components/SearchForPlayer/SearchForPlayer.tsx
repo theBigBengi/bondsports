@@ -36,8 +36,8 @@ export default function SearchForPlayer() {
   return (
     <div className='search-player'>
       <input
-        onChange={onSearchChange}
         placeholder='Search for player...'
+        onChange={onSearchChange}
         value={searchTerm}
       />
       {searchTerm !== "" && <XCircleIcon onClick={() => onSearchChange()} />}

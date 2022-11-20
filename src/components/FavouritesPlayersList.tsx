@@ -8,7 +8,7 @@ import { QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 const colors = ["rgba(255, 0, 119, 0.366)", "rgba(255,249,34)", "white"];
 
 const FavouritesPlayersList = () => {
-  const [color, setColor] = useState<string>("#aabbcc");
+  const [color, setColor] = useState<string>("#FFF");
   const [favoritesPlayers, setFavoritesPlayers] =
     useRecoilState(favouritesState);
 
@@ -17,9 +17,9 @@ const FavouritesPlayersList = () => {
   };
 
   const emptyList = (
-    <h3 style={{ padding: "50px 0", wordBreak: "break-all", maxWidth: 200 }}>
-      Add players to favoriets...
-    </h3>
+    <div className='empty'>
+      <h3>Your favorite players list is empty. Start adding players....</h3>
+    </div>
   );
 
   const playersList = (
@@ -52,14 +52,17 @@ const FavouritesPlayersList = () => {
                 />
               ))}
 
-              <button>
-                <QuestionMarkCircleIcon
-                  onClick={(e) =>
-                    handleColorPick(
-                      `#${Math.floor(Math.random() * 16777215).toString(16)}`
-                    )
-                  }
-                />
+              <button
+                onClick={(e) =>
+                  handleColorPick(
+                    `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                  )
+                }
+                style={{
+                  backgroundColor: color,
+                }}
+              >
+                <QuestionMarkCircleIcon />
               </button>
             </div>
           </div>

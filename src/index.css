@@ -16,8 +16,25 @@ ul {
   padding: 0;
 }
 
+button {
+  background-color: transparent;
+  color:  rgb(211, 5, 101);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 10px 20px;
+  min-width: 120px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
 svg {
-  min-width:18px
+  width:18px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+svg:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 code {

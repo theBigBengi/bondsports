@@ -3,16 +3,6 @@
   text-align: center;
 }
 
-.icon {
-    width: 18px;
-    color: rgba(0, 0, 0, 0.534);
-}
-
-.icon:hover {
-    cursor: pointer;
-    color: rgb(0,0,0);
-}
-
 .favorite   {
     color: rgb(255,249,34);
 }
@@ -117,6 +107,12 @@ main > div:nth-child(2) {
     
 }
 
+.empty {
+   margin-top: 100px;
+   font-size: 16px;
+   font-weight: 900;
+}
+
 .container h3 {
     text-align: center;
     margin: auto;
@@ -206,18 +202,18 @@ main > div:nth-child(2) {
     padding: 0 20px;
   }
 
-.modal-close button {
+/* .modal-close button {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: aliceblue;
     border: none;
-  }
+  } */
 
 
   /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
   }
   
   /* Track */

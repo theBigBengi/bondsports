@@ -12,12 +12,11 @@ import useViewport from "./hooks/useViewport";
 const URL = "https://www.balldontlie.io/api/v1/players";
 
 const App: React.FC = () => {
-  const [state, setPlayers] = useRecoilState(playersState);
-  const { players } = state;
-  const [errors, setErrors] = useState<Error>();
   const [displayFavorites, setDisplayFavorites] = useState<boolean>(false);
-
+  const [state, setPlayers] = useRecoilState(playersState);
+  const [errors, setErrors] = useState<Error>();
   const { width, height } = useViewport();
+  const { players } = state;
 
   useEffect(() => {
     fetch(URL)
@@ -28,10 +27,10 @@ const App: React.FC = () => {
       .catch((error: Error) => setErrors(error));
   }, []);
 
-  // Errors
+  // On error
   if (errors) return <>{errors.message ?? "Somthing went wrong..."}</>;
 
-  // Loading
+  // On loading
   if (!players.length)
     return (
       <div className='spinner'>

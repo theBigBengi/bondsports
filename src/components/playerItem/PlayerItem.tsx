@@ -82,10 +82,14 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
               </div>
               <div className='player-team'>
                 <h4>{teamName}</h4>
-                <label>Division</label>
+                <div>
+                  <h5>Division</h5>
+                  <p>{abbreviation}</p>
+                </div>
               </div>
               <div className='modal-actions'>
                 <button>Add to favorites</button>
+                <button onClick={() => setShowModal(false)}>OK</button>
               </div>
             </div>
           </Modal>
