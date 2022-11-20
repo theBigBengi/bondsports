@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { favouritesState } from "../store";
-import PlayerItem from "./playerItem/PlayerItem";
+import PlayerItem from "./playerItem/Player";
 // import { HexColorPicker } from "react-colorful";
 import { useState } from "react";
 import { QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -45,6 +45,7 @@ const FavouritesPlayersList = () => {
             <div className='color-picker'>
               {colors.map((color) => (
                 <button
+                  className='color-picker__button'
                   onClick={(e) => handleColorPick(color)}
                   style={{
                     backgroundColor: color,
@@ -53,6 +54,7 @@ const FavouritesPlayersList = () => {
               ))}
 
               <button
+                className='color-picker__button'
                 onClick={(e) =>
                   handleColorPick(
                     `#${Math.floor(Math.random() * 16777215).toString(16)}`

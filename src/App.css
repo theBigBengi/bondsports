@@ -86,6 +86,7 @@ main > div:nth-child(2) {
     justify-content: center;
     padding: 0;
     margin: 0 3px;
+    min-width: 22px;
 }
 
 .list-bar button:hover {
@@ -201,17 +202,9 @@ main > div:nth-child(2) {
     justify-content: space-between;
     padding: 0 20px;
   }
-
-/* .modal-close button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: aliceblue;
-    border: none;
-  } */
-
-
-  /* width */
+  
+  /* scrollbar */
+  
 ::-webkit-scrollbar {
     width: 7px;
   }
@@ -279,9 +272,29 @@ main > div:nth-child(2) {
         padding: 0px;
     }
 
-    .modal {
-        height: 100%;
-        width: 100%;
-        border-radius: 0;
+    .modal-layer {
+        align-items: flex-end;
       }
+
+    .modal {
+        height: 55%;
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+        -webkit-animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1)s;
+        animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .modal-content {
+        padding:30px 0
+      }
+  }
+
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
   }

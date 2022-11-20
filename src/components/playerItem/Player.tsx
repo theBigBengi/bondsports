@@ -5,7 +5,7 @@ import { Favorites } from "../Favorites";
 import { useRecoilState } from "recoil";
 import { favouritesState } from "../../store";
 import Modal from "../Modal";
-import "./style.css";
+import "./player.css";
 
 interface SinglePlayerProps {
   player: Player;
@@ -13,7 +13,14 @@ interface SinglePlayerProps {
 
 const PlayerItem = ({ player }: SinglePlayerProps) => {
   const { first_name, last_name, team } = player;
-  const { full_name: teamName, abbreviation } = team;
+  const {
+    full_name: teamFullName,
+    abbreviation,
+    division,
+    conference,
+    city,
+    name: teamName,
+  } = team;
 
   const [favoritesPlayers, setFavoritesPlayers] =
     useRecoilState(favouritesState);
@@ -47,6 +54,8 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
       : addPlayerToFavorites(player);
   };
 
+  console.log(player);
+
   return (
     <>
       <div className='player'>
@@ -78,17 +87,28 @@ const PlayerItem = ({ player }: SinglePlayerProps) => {
           <Modal onClose={setShowModal}>
             <div className='player-modal'>
               <div className='banner'>
+                <Favorites
+                  handleClick={handleFavoritesClick}
+                  isFavorite={isFavorite}
+                />
                 <h3>{`${first_name} ${last_name}`}</h3>
               </div>
               <div className='player-team'>
-                <h4>{teamName}</h4>
+                <h4>{teamFullName}</h4>
+                <div>
+                  <h5>city</h5>
+                  <p>{city}</p>
+                </div>
                 <div>
                   <h5>Division</h5>
-                  <p>{abbreviation}</p>
+                  <p>{division}</p>
+                </div>
+                <div>
+                  <h5>Conference</h5>
+                  <p>{conference}</p>
                 </div>
               </div>
               <div className='modal-actions'>
-                <button>Add to favorites</button>
                 <button onClick={() => setShowModal(false)}>OK</button>
               </div>
             </div>
