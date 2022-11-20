@@ -1,4 +1,4 @@
-/* 
+
 .modal-layer {
     background-color: rgba(0,0,0,0.5);
     position: fixed;
@@ -24,7 +24,6 @@
     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.15);
     border-radius: 25px;
     min-width: 200px;
-    background-color: black;
 }
 
 .modal-content {
@@ -79,4 +78,4 @@
     100% {
       transform: translateY(0%);
     }
-  } */
+  }

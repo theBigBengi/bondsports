@@ -11,6 +11,7 @@ interface ModalProps {
 }
 
 const Modal = ({ children, onClose, title }: ModalProps) => {
+  console.log("sss");
   return ReactDOM.createPortal(
     <div className='modal-layer' onClick={() => onClose(false)}>
       <div
